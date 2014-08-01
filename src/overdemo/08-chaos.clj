@@ -1,4 +1,4 @@
-(ns overdemo.slackbot
+(ns overdemo.chaos
   (:use [overtone.live])
   (:use [clojure.core.async :only [chan <! >! <!! >!! go go-loop]])
   (:use [org.httpkit.server :only [run-server]])

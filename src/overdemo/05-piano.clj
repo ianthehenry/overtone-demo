@@ -1,4 +1,4 @@
-(ns overdemo.vocoder
+(ns overdemo.piano
   (:use [overtone.live])
   (:use [overdemo.wicki])
   (:use [overtone.inst.sampled-piano]))

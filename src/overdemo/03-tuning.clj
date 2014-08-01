@@ -1,4 +1,4 @@
-(ns overdemo.one
+(ns overdemo.tuning
   (:use [overtone.live]))
 
 (definst sin-mouse [left 400 right 500 amp 1]

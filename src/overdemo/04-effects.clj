@@ -1,4 +1,4 @@
-(ns overdemo.vocoder
+(ns overdemo.effects
   (:use [overtone.live])
   (:use [overtone.studio.scope]))
 
@@ -12,7 +12,5 @@
 #_ (echo)
 #_ (kill echo)
 
-(inst-fx! echo fx-echo)
+#_ (inst-fx! echo fx-echo)
 #_ (clear-fx echo)
-
-(boot-internal-server)
