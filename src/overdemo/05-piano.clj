@@ -9,7 +9,7 @@
 
 (definst ping [note 60 amp 1 gate 1]
   (-> (sin-osc (midicps note))
-      (* (env-gen (adsr) gate))
+      (* (env-gen (adsr) gate :action FREE))
       (* amp)))
 
 (defn midi-on [note velocity-f]
