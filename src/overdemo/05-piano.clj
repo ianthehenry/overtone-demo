@@ -1,21 +1,23 @@
 (ns overdemo.piano
   (:use [overtone.live])
   (:use [overdemo.wicki])
-  (:use [overtone.inst.sampled-piano]))
+  (:use [overtone.inst.sampled-piano])
+  (:use [overtone.inst.synth]))
 
 (defonce players (atom {}))
 
 #_ (reset! players nil)
 
-(definst ping [note 60 amp 1 gate 1]
+(definst pinger [note 60 amp 1 gate 1]
   (-> (sin-osc (midicps note))
       (* (env-gen (adsr) gate :action FREE))
       (* amp)))
 
 (defn midi-on [note velocity-f]
-  (if-let [player (get @players note)]
-    (ctl player :gate 0))
-  (swap! players assoc note (ping note velocity-f)))
+  (let [freq (midi->hz note)]
+    (if-let [player (get @players note)]
+      (ctl player :gate 0))
+    (swap! players assoc note (pinger note velocity-f))))
 
 (defn midi-off [note]
   (if-let [player (get @players note)]
