@@ -8,9 +8,8 @@
 
 (definst vocoder [freq 300 amp 1]
   (let [input (in (num-output-buses:ir))
-        ugen square
-        src (mix [(ugen (* 1.01 freq))
-                  (ugen (* 0.99 freq))]); synth
+        ugen saw
+        src (ugen freq)
         formed (pv-mul (fft a input) (fft b src))
         audio (ifft formed)]
     (* audio amp)))
